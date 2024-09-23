@@ -37,6 +37,35 @@
   border-top: 1px solid #2c5474;
 }
 
+/*------------------*/
+
+.search-container {
+  position: relative;
+  width: 60%;
+}
+
+.search-dropdown {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  width: 70%;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
 @media (min-width: 768px) {
   .search-container {
     width: 40%;
