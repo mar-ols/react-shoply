@@ -1,3 +1,32 @@
+.productCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 250px;
+  border-radius: 5px;
+  border: 1px solid #2c5474;
+  margin: 0.5rem;
+  padding: 1rem;
+}
+
+.productCard img {
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.discountedPrice {
+  font-weight: 800;
+  color: #ec0000;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.oldPrice {
+  text-decoration: line-through;
+}
+
 @media (min-width: 768px) {
   .search-container {
     width: 40%;
