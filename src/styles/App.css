@@ -27,6 +27,16 @@
   text-decoration: line-through;
 }
 
+.productImg {
+  max-width: 700px;
+  margin: auto;
+}
+
+.divider {
+  margin: 2rem 0;
+  border-top: 1px solid #2c5474;
+}
+
 @media (min-width: 768px) {
   .search-container {
     width: 40%;
