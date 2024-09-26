@@ -4,6 +4,7 @@ import { StyledProduct } from "../../styles/styled-components/single-product";
 import { DisplayPrice } from "../../components/price";
 import { StyledButton } from "../../styles/styled-components/buttons";
 import { StyledReview } from "../../styles/styled-components/review";
+import { DisplayStars } from "../../components/reviews/stars";
 
 function DisplayProduct() {
   const { data, isLoading, isError } = useProduct();
@@ -35,14 +36,20 @@ function DisplayProduct() {
             <StyledButton>Add to cart</StyledButton>
           </div>
           <div className="divider"></div>
-          {data.reviews.map((review) => (
-            <StyledReview key={review.id}>
-              <p>
-                <span className="bold">{review.description}</span> -
-                {review.username}
-              </p>
-            </StyledReview>
-          ))}
+          <h3>Reviews</h3>
+          {data.reviews.length === 0 ? (
+            <p>No reviews yet</p>
+          ) : (
+            data.reviews.map((review) => (
+              <StyledReview key={review.id}>
+                {DisplayStars(review.rating)}
+                <p>
+                  <span className="bold">{review.description}</span> -{" "}
+                  {review.username}
+                </p>
+              </StyledReview>
+            ))
+          )}
         </StyledProduct>
       </main>
     </>
