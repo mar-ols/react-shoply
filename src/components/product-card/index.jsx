@@ -24,7 +24,9 @@ function ProductCard() {
       <StyledProductCardContainer>
         {data.map((product) => (
           <div key={product.id} className="productCard">
-            <img src={product.image.url} alt={product.title} />
+            <Link to={product.id}>
+              <img src={product.image.url} alt={product.title} />
+            </Link>
             <Link to={product.id} className="bold">
               {product.title}
             </Link>
