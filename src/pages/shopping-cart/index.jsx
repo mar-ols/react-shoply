@@ -39,7 +39,7 @@ function Cart() {
       <StyledDiv>
         <div className="divider"></div>
         {groupedItems.length === 0 ? (
-          <div>Your cart is empty</div>
+          <div className="centered">Your cart is empty</div>
         ) : (
           <div>
             {groupedItems.map((product) => (
