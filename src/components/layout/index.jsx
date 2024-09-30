@@ -19,11 +19,11 @@ function Layout() {
   }
 
   return (
-    <div>
+    <>
       <Header products={products} />
       <Outlet />
       <Footer />
-    </div>
+    </>
   );
 }
 

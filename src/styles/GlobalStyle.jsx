@@ -9,6 +9,11 @@ const GlobalStyle = createGlobalStyle`
     --color-info: #FFD700;
   }
 
+  #root {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;}
+
   body {
     font-family: "Jura";
     src: url("../assets/fonts/Jura-VariableFont_wght.ttf") format("truetype");
