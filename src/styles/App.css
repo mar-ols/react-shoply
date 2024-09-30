@@ -24,6 +24,10 @@
   font-weight: 800;
 }
 
+.centered {
+  text-align: center;
+}
+
 .oldPrice {
   text-decoration: line-through;
 }
