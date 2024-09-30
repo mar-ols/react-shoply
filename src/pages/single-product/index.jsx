@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { CartContext } from "../../components/cart";
 import { useProduct } from "../../components/hooks/api/product";
 import { StyledH1 } from "../../styles/styled-components/h1";
 import { StyledProduct } from "../../styles/styled-components/single-product";
@@ -7,6 +9,12 @@ import { StyledReview } from "../../styles/styled-components/review";
 import { DisplayStars } from "../../components/reviews/stars";
 
 function DisplayProduct() {
+  const { addToCart } = useContext(CartContext);
+
+  const handleAddToCart = () => {
+    addToCart(data);
+  };
+
   const { data, isLoading, isError } = useProduct();
 
   if (isLoading) {
@@ -33,7 +41,7 @@ function DisplayProduct() {
           {DisplayPrice(data.discountedPrice, data.price)}
           <p>{data.description}</p>
           <div>
-            <StyledButton>Add to cart</StyledButton>
+            <StyledButton onClick={handleAddToCart}>Add to cart</StyledButton>
           </div>
           <div className="divider"></div>
           <h3>Reviews</h3>

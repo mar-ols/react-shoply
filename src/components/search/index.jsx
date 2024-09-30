@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useProducts } from "../hooks/api/products";
-import { StyledSearch } from "../../styles/styled-components/search";
 
 function ProductSearch() {
   const {
@@ -13,20 +11,13 @@ function ProductSearch() {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
-    if (searchInput) {
+    if (products.length > 0) {
       const filtered = products.filter((product) =>
         product.title.toLowerCase().includes(searchInput.toLowerCase())
       );
       setFilteredProducts(filtered);
-    } else {
-      setFilteredProducts([]);
     }
   }, [searchInput, products]);
-
-  const handleProductClick = () => {
-    setSearchInput("");
-    setFilteredProducts([]);
-  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -37,28 +28,26 @@ function ProductSearch() {
   }
 
   return (
-    <div className="search-container">
-      <StyledSearch
+    <div>
+      <input
         type="text"
-        aria-label="Search"
-        placeholder="Search..."
+        placeholder="Search for a product..."
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
       />
-      {filteredProducts.length > 0 && (
-        <div className="search-dropdown">
-          {filteredProducts.map((product) => (
-            <Link
-              key={product.id}
-              to={`/${product.id}`}
-              className="dropdown-item"
-              onClick={handleProductClick}
-            >
-              {product.title}
-            </Link>
-          ))}
-        </div>
-      )}
+      <div>
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            <div key={product.id}>
+              <h2>{product.title}</h2>
+              <p>{product.description}</p>
+              <p>Price: {product.price} KR</p>
+            </div>
+          ))
+        ) : (
+          <p>No products found</p>
+        )}
+      </div>
     </div>
   );
 }
