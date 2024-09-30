@@ -7,7 +7,7 @@ import { StyledCartContainer } from "../../styles/styled-components/cart/cartCon
 import { StyledButton } from "../../styles/styled-components/buttons";
 
 function Cart() {
-  const { cartItems, removeFromCart } = useContext(CartContext);
+  const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
 
   const groupedItems = useMemo(() => {
     const itemMap = {};
@@ -28,6 +28,10 @@ function Cart() {
       return total + product.discountedPrice * product.quantity;
     }, 0);
   }, [groupedItems]);
+
+  const handleCheckout = () => {
+    clearCart();
+  };
 
   return (
     <main>
@@ -69,7 +73,7 @@ function Cart() {
               </p>
             </div>
             <Link to="/checkout">
-              <StyledButton>Checkout</StyledButton>
+              <StyledButton onClick={handleCheckout}>Checkout</StyledButton>
             </Link>
           </div>
         )}
