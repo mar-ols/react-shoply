@@ -17,8 +17,6 @@ function ProductCard() {
     return <div>Error</div>;
   }
 
-  console.log(data);
-
   return (
     <>
       <StyledProductCardContainer>
