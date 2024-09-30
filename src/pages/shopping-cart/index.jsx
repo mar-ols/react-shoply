@@ -69,7 +69,7 @@ function Cart() {
             ))}
             <div>
               <p>
-                Total: <span className="bold">{totalPrice} KR</span>
+                Total: <span className="bold">{totalPrice.toFixed(2)}KR</span>
               </p>
             </div>
             <Link to="/checkout">
