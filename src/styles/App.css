@@ -16,7 +16,7 @@
   object-fit: cover;
 }
 
-.discountedPrice {
+.warn {
   font-weight: 800;
   color: #ec0000;
 }
@@ -107,9 +107,28 @@
   background-color: #f1f1f1;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: 2rem auto;
+}
+
+form input {
+  padding: 0.3rem;
+}
+
+.sentForm {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .search-container {
     width: 40%;
     padding-right: 2rem;
+  }
+
+  form {
+    width: 40%;
   }
 }
