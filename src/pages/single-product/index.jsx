@@ -10,9 +10,12 @@ import { DisplayStars } from "../../components/reviews/stars";
 
 function DisplayProduct() {
   const { addToCart } = useContext(CartContext);
+  const cartConfirmation = document.querySelector("#cartConfirmation");
 
   const handleAddToCart = () => {
     addToCart(data);
+
+    cartConfirmation.classList.remove("sentForm");
   };
 
   const { data, isLoading, isError } = useProduct();
@@ -43,6 +46,9 @@ function DisplayProduct() {
           <div>
             <StyledButton onClick={handleAddToCart}>Add to cart</StyledButton>
           </div>
+          <p id="cartConfirmation" className="sentForm">
+            Product added to cart
+          </p>
           <div className="divider"></div>
           <h3>Reviews</h3>
           {data.reviews.length === 0 ? (
