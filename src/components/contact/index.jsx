@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useState } from "react";
 import { StyledButton } from "../../styles/styled-components/buttons";
 
 const schema = yup
@@ -28,7 +29,7 @@ const schema = yup
   .required();
 
 function ContactForm() {
-  const confirmation = document.querySelector("#confirmation");
+  const [confirmationVisible, setConfirmationVisible] = useState(false);
 
   const {
     register,
@@ -41,10 +42,8 @@ function ContactForm() {
 
   function onSubmit(data) {
     console.log(data);
-
+    setConfirmationVisible(true);
     reset();
-
-    confirmation.classList.remove("sentForm");
   }
 
   return (
@@ -91,9 +90,9 @@ function ContactForm() {
         <p className="warn">{errors.message?.message}</p>
         <StyledButton type="submit">Submit</StyledButton>
       </form>
-      <p id="confirmation" className="sentForm centered">
-        Message successfully sent
-      </p>
+      {confirmationVisible && (
+        <p className="centered">Message successfully sent</p>
+      )}
     </>
   );
 }

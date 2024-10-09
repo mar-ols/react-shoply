@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../components/cart";
 import { useProduct } from "../../components/hooks/api/product";
 import { StyledH1 } from "../../styles/styled-components/h1";
@@ -10,12 +10,11 @@ import { DisplayStars } from "../../components/reviews/stars";
 
 function DisplayProduct() {
   const { addToCart } = useContext(CartContext);
-  const cartConfirmation = document.querySelector("#cartConfirmation");
+  const [addToCartVisible, setAddToCartVisible] = useState(false);
 
   const handleAddToCart = () => {
     addToCart(data);
-
-    cartConfirmation.classList.remove("sentForm");
+    setAddToCartVisible(true);
   };
 
   const { data, isLoading, isError } = useProduct();
@@ -46,9 +45,7 @@ function DisplayProduct() {
           <div>
             <StyledButton onClick={handleAddToCart}>Add to cart</StyledButton>
           </div>
-          <p id="cartConfirmation" className="sentForm">
-            Product added to cart
-          </p>
+          {addToCartVisible && <p>Product added to cart</p>}
           <div className="divider"></div>
           <h3>Reviews</h3>
           {data.reviews.length === 0 ? (

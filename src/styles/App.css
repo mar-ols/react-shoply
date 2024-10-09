@@ -118,10 +118,6 @@ form input {
   padding: 0.3rem;
 }
 
-.sentForm {
-  display: none;
-}
-
 @media (min-width: 768px) {
   .search-container {
     width: 40%;
